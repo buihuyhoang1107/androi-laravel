@@ -2,8 +2,8 @@ package com.example.food_2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -19,12 +19,18 @@ public class MainActivity extends AppCompatActivity {
         //Tạo các button bấm
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        //Xuất hiện fragment đầu tiên
+        Fragment fragment = new SearchFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     androidx.fragment.app.Fragment selectedFragment = null;
+
 
                     switch (menuItem.getItemId()){
                         case R.id.nav_home:
@@ -35,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_search:
                             selectedFragment = new SearchFragment();
+                            break;
+                        case R.id.nav_person:
+                            selectedFragment = new PersonFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
