@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+/*Route::get('categories','Api\CategoriesController@Category');
+Route::get('categories/{id}','Api\CategoriesController@CategoryById');
+Route::post('categories','Api\CategoriesController@CategorySave');
+Route::put('categories/{id}','Api\CategoriesController@CategoryUpdate');
+Route::delete('categories/{id}','Api\CategoriesController@CategoryDelete');*/
+Route::apiResource('categories','Api\Categories');
