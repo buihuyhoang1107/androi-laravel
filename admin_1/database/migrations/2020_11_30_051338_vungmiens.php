@@ -15,7 +15,7 @@ class Vungmiens extends Migration
     {
         Schema::create('vungmiens', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('ten_vungmien');
             $table->Integer('action')->default(1);
             $table->timestamps();
         });

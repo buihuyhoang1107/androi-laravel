@@ -30,7 +30,9 @@ class BaivietController extends Controller
      */
     public function create()
     {
-        //
+        $arr['categories']=Category::all();
+        $arr['vungmiens']=Vungmiens::all();
+        return view('admin.baiviet.create')->with($arr);
     }
 
     /**
@@ -39,9 +41,27 @@ class BaivietController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Baiviets $baiviet)
     {
-        //
+        if($request->hinhanh->getClientOriginalName())
+        {
+            $ext= $request->hinhanh->getClientOriginalExtension();
+            $file = date('YmdHis').rand(1,9999).'.'.$ext;
+            $request->hinhanh->storeAs('public/baiviet',$file);
+        }
+        else{
+            $file='';
+        }
+        $baiviet->hinhanh=$file;
+        $baiviet->ten=$request->ten;
+        $baiviet->nguyenlieu=$request->nguyenlieu;
+        $baiviet->soche=$request->soche;
+        $baiviet->thuchien=$request->thuchien;
+        $baiviet->cachdung=$request->cachdung;
+        $baiviet->category_id=$request->category_id;
+        $baiviet->vungmien_id=$request->vungmien_id;
+        $baiviet->save();
+        return redirect()->route('home.baiviet.index');
     }
 
     /**
@@ -61,9 +81,12 @@ class BaivietController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Baiviets $baiviet )
     {
-        //
+        $arr['baiviet']=$baiviet;
+        $arr['categories']=Category::all();
+        $arr['vungmiens']=Vungmiens::all();
+        return view('admin.baiviet.edit')->with($arr);
     }
 
     /**
@@ -73,9 +96,30 @@ class BaivietController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Baiviets $baiviet)
     {
-        //
+        if(isset($request->hinhanh)&&$request->hinhanh->getClientOriginalName())
+        {
+            $ext= $request->hinhanh->getClientOriginalExtension();
+            $file = date('YmdHis').rand(1,9999).'.'.$ext;
+            $request->hinhanh->storeAs('public/baiviet',$file);
+        }
+        else{
+            if(!$baiviet->hinhanh)
+                $file='';
+            else
+                $file=$baiviet->hinhanh;
+        }
+        $baiviet->hinhanh=$file;
+        $baiviet->ten=$request->ten;
+        $baiviet->nguyenlieu=$request->nguyenlieu;
+        $baiviet->soche=$request->soche;
+        $baiviet->thuchien=$request->thuchien;
+        $baiviet->cachdung=$request->cachdung;
+        $baiviet->category_id=$request->categories_id;
+        $baiviet->vungmien_id=$request->vungmien_id;
+        $baiviet->save();
+        return redirect()->route('home.baiviet.index');
     }
 
     /**
@@ -86,6 +130,7 @@ class BaivietController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
+        return redirect()->route('home.baiviet.index');
     }
 }

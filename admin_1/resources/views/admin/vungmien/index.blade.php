@@ -31,7 +31,7 @@
     			@foreach($vungmien as $value)
     			<tr>
     				<td>{{$value->id}}</td>
-    				<td>{{$value->title}}</td>
+    				<td>{{$value->ten_vungmien}}</td>
     				<td><a href="{{route('home.vungmien.edit',$value->id)}}" class="btn btn-success">Edit</a>
 						 <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-secondary">Delete</a>
 						 <form action="{{route('home.vungmien.destroy',$value->id )}}" method="post">

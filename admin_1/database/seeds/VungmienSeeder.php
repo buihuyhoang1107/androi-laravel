@@ -12,9 +12,9 @@ class VungmienSeeder extends Seeder
     public function run()
     {
         DB::table('vungmiens')->insert([
-            ['title' => 'Miền Bắc‎'],
-            ['title' => 'Miền Nam‎'],
-            ['title' => 'Miền Trung‎'],
+            ['ten_vungmien' => 'Miền Bắc‎'],
+            ['ten_vungmien' => 'Miền Nam‎'],
+            ['ten_vungmien' => 'Miền Trung‎'],
         ]);
     }
 }

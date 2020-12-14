@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Baiviets;
+use DB;
 use Validator;
 class BaivietsApi extends Controller
 {
@@ -15,7 +16,12 @@ class BaivietsApi extends Controller
      */
     public function index()
     {
-        return response()->json(Baiviets::get(),200);
+        $data = DB::table('baiviets')
+        ->join('vungmiens','baiviets.vungmien_id','=','vungmiens.id')
+        ->join('categories','baiviets.categories_id','=','categories.id')
+        ->get();
+
+        return response()->json($data,200);
     }
 
     /**

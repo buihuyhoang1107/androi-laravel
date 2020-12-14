@@ -24,3 +24,4 @@ Route::put('categories/{id}','Api\CategoriesController@CategoryUpdate');
 Route::delete('categories/{id}','Api\CategoriesController@CategoryDelete');*/
 Route::apiResource('categories','Api\Categories');
 Route::apiResource('baiviets','Api\BaivietsApi');
+Route::apiResource('vungmiens','Api\VungmiensApi');

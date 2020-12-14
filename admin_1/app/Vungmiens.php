@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 class Vungmiens extends Model
 {
     protected $table="vungmiens";
@@ -14,4 +13,7 @@ class Vungmiens extends Model
         'created_at',
         'updated_at',
     ];
+    public function baiviets(){
+        return $this->hasmany('App\baiviets');
+    }
 }
