@@ -57,4 +57,8 @@ public class MainActivity extends AppCompatActivity {
         Intent downloadIntent = new Intent(this, LoginActivity.class);
         startActivities(new Intent[]{downloadIntent});
     }
+
+
+    public void Dangky(View view) {
+    }
 }
