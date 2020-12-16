@@ -22,8 +22,15 @@
 			<input type="hidden" name="_token" value="{{csrf_token()}}">
 			<div class="form-group">	
 				<div class="row">	
-					<label class="col-md-3">Title</label>
-					<div class="col-md-6"><input type="text" name="title" class="form-control"></div>
+					<label class="col-md-3">Tên</label>
+					<div class="col-md-6"><input type="text" name="ten_vungmien" class="form-control" required></div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="form-group">	
+				<div class="row">	
+					<label class="col-md-3">Nội dung</label>
+					<div class="col-md-6"> <textarea name="noidung" class="form-control" required></textarea> </div>
 					<div class="clearfix"></div>
 				</div>
 			</div>

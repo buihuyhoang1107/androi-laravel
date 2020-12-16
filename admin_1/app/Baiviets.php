@@ -27,7 +27,7 @@ class Baiviets extends Model
     'title',
 ];
 public function Vungmiens(){
-    return $this->belongsTo('App\vungmiens');
+    return $this->belongsTo('App\vungmiens','vungmien_id');
 }
     public function category(){
         return $this->belongsTo('App\category');

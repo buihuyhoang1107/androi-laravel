@@ -23,42 +23,42 @@
 			<div class="form-group">	
 				<div class="row">	
 					<label class="col-md-3">Tên</label>
-					<div class="col-md-6"><input type="text" name="ten" class="form-control"></div>
+					<div class="col-md-6"><input type="text" name="ten" class="form-control"required></div>
 					<div class="clearfix"></div>
 				</div>
 			</div>
             <div class="form-group">	
 				<div class="row">	
 					<label class="col-md-3">Nguyên Liệu</label>
-					<div class="col-md-6"><input type="text" name="nguyenlieu" class="form-control"></div>
+					<div class="col-md-6"><textarea name="nguyenlieu" class="form-control" required></textarea></div>
 					<div class="clearfix"></div>
 				</div>
 			</div>
             <div class="form-group">	
 				<div class="row">	
 					<label class="col-md-3">Sơ chế</label>
-					<div class="col-md-6"><input type="text" name="soche" class="form-control"></div>
+					<div class="col-md-6"><textarea name="soche" class="form-control" required></textarea></div>
 					<div class="clearfix"></div>
 				</div>
 			</div>
             <div class="form-group">	
 				<div class="row">	
 					<label class="col-md-3">Thực hiện</label>
-					<div class="col-md-6"><input type="text" name="thuchien" class="form-control"></div>
+					<div class="col-md-6"><textarea name="thuchien" class="form-control" required></textarea></div>
 					<div class="clearfix"></div>
 				</div>
 			</div>
             <div class="form-group">	
 				<div class="row">	
 					<label class="col-md-3">cách dùng</label>
-					<div class="col-md-6"><input type="text" name="cachdung" class="form-control"></div>
+					<div class="col-md-6"> <textarea name="cachdung" class="form-control" required></textarea> </div>
 					<div class="clearfix"></div>
 				</div>
 			</div>
-            <div class="form-group">	
+            <div class="form-group">	 
 				<div class="row">	
 					<label class="col-md-3">Hình ảnh</label>
-					<div class="col-md-6"><input type="file" name="hinhanh"></div> 
+					<div class="col-md-6"><input type="file" name="hinhanh" required></div> 
 				</div>
 			</div>
 
@@ -66,7 +66,7 @@
 				<div class="row">
                 <label class="col-md-3"></label>	
                 <select name="category_id" class="form-control col-md-6 ">
-                     <option value="">Chọn thể loại</option> 
+                     <!-- <option value="">Chọn thể loại</option>  -->
                      @foreach($categories as $category)
                      <option value="{{ $category->id}}">{{$category->title}}</option>
                      @endforeach
@@ -78,8 +78,8 @@
             <div class="form-group">	
 				<div class="row">
                 <label class="col-md-3"></label>	
-                <select name="category_id" class="form-control col-md-6 ">
-                     <option value="">Chọn vùng miền</option> 
+                <select name="vungmien_id" class="form-control col-md-6 ">
+                     <!-- <option value="">Chọn vùng miền</option>  -->
                      @foreach($vungmiens as $vungmien)
                      <option value="{{$vungmien->id}}">{{$vungmien->ten_vungmien}}</option>
                      @endforeach

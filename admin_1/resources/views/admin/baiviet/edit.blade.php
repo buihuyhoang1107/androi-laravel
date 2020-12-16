@@ -83,17 +83,36 @@
 				<div class="row">
                 <label class="col-md-3"></label>	
                 <select name="category_id" class="form-control col-md-6 ">
-                     <option value="">Chọn thể loại</option> 
+                     <!-- <option value="">Chọn thể loại</option>  -->
                      @foreach($categories as $category)
-                     <option value="{{ $category->id}}"
+                     <option value="{{$category->id}}"
                         @if($category->id==$baiviet->category_id)
                             selected
-                         @endif>{{$category->title}}</option>
+                         @endif
+						 >{{$category->title}}</option>
                      @endforeach
                  </select>
 					<div class="clearfix"></div>
 				</div>
 			</div>
+
+			<div class="form-group">	
+				<div class="row">
+                <label class="col-md-3"></label>	
+                <select name="vungmien_id" class="form-control col-md-6 ">
+                     <!-- <option value="">Chọn vùng miền</option>  -->
+                     @foreach($vungmiens as $vungmien)
+                     <option value="{{$vungmien->id}}"
+                        @if($vungmien->id==$baiviet->vungmien_id)
+                            selected
+                         @endif
+						 >{{$vungmien->ten_vungmien}}</option>
+                     @endforeach
+                 </select>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+
 			<div class="form-group">
 				<input type="submit" class="btn btn-success" value=" Save">
 			</div>

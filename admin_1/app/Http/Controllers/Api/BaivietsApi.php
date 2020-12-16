@@ -18,7 +18,7 @@ class BaivietsApi extends Controller
     {
         $data = DB::table('baiviets')
         ->join('vungmiens','baiviets.vungmien_id','=','vungmiens.id')
-        ->join('categories','baiviets.categories_id','=','categories.id')
+        ->join('categories','baiviets.category_id','=','categories.id')
         ->get();
 
         return response()->json($data,200);

@@ -8,7 +8,8 @@ class Vungmiens extends Model
     protected $table="vungmiens";
     public $timestamps=false;
     protected $fillable=[
-        'title',
+        'ten_vungmien',
+        'noidung',
         'action',
         'created_at',
         'updated_at',

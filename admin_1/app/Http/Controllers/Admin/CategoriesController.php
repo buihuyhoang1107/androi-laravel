@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
+use Validator;
 class CategoriesController extends Controller
 {
     /**
@@ -38,6 +39,11 @@ class CategoriesController extends Controller
      */
     public function store(Request $request,Category $category)
     {
+        $rule=['title'=>'required|min:3',];
+        $validator=Validator::make($request->all(),$rule);
+        if($validator->fails()){
+        return redirect()->route('home.categories.create');
+    }
         $category->title=$request->title;
         $category->save();
         return redirect()->route('home.categories.index');
@@ -75,6 +81,11 @@ class CategoriesController extends Controller
      */
     public function update(Request $request,Category $category)
     {
+        $rule=['title'=>'required|min:3',];
+        $validator=Validator::make($request->all(),$rule);
+        if($validator->fails()){
+        return redirect()->route('home.categories.create');
+        }
         $category->title=$request->title;
         $category->save();
         return redirect()->route('home.categories.index');

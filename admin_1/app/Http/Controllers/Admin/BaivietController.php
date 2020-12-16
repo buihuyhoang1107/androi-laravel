@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Vungmiens;
 use App\Baiviets;
+use DB;
+use Validator;
 class BaivietController extends Controller
 {
     public function __construct(){
@@ -43,6 +45,16 @@ class BaivietController extends Controller
      */
     public function store(Request $request,Baiviets $baiviet)
     {
+        $rule=['ten'=>'required|min:3',
+                'nguyenlieu'=>'required|min:10', 
+                'soche'=>'required|min:10',
+                'thuchien'=>'required|min:10',
+                'cachdung'=>'required|min:3',   
+                'hinhanh'=>'required'];
+        $validator=Validator::make($request->all(),$rule);
+        if($validator->fails()){
+            return redirect()->route('home.baiviet.create');
+        }
         if($request->hinhanh->getClientOriginalName())
         {
             $ext= $request->hinhanh->getClientOriginalExtension();
@@ -98,6 +110,16 @@ class BaivietController extends Controller
      */
     public function update(Request $request, Baiviets $baiviet)
     {
+         $rule=['ten'=>'required|min:3',
+                'nguyenlieu'=>'required|min:10', 
+                'soche'=>'required|min:10',
+                'thuchien'=>'required|min:10',
+                'cachdung'=>'required|min:3',   
+                'hinhanh'=>'required'];
+        $validator=Validator::make($request->all(),$rule);
+        if($validator->fails()){
+            return redirect()->route('home.baiviet.create');
+        }
         if(isset($request->hinhanh)&&$request->hinhanh->getClientOriginalName())
         {
             $ext= $request->hinhanh->getClientOriginalExtension();
@@ -116,7 +138,7 @@ class BaivietController extends Controller
         $baiviet->soche=$request->soche;
         $baiviet->thuchien=$request->thuchien;
         $baiviet->cachdung=$request->cachdung;
-        $baiviet->category_id=$request->categories_id;
+        $baiviet->category_id=$request->category_id;
         $baiviet->vungmien_id=$request->vungmien_id;
         $baiviet->save();
         return redirect()->route('home.baiviet.index');
@@ -130,7 +152,7 @@ class BaivietController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
+        Baiviets::destroy($id);
         return redirect()->route('home.baiviet.index');
     }
 }

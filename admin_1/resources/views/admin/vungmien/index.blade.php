@@ -25,13 +25,15 @@
     		<table class="table table-bordered table-striped">
     			<tr>
     				<th>ID</th>
-    				<th>Titel</th>
+    				<th>Tên</th>
+					<th>Nội dung</th>
     				<th>Action</th>
     			</tr>
     			@foreach($vungmien as $value)
     			<tr>
     				<td>{{$value->id}}</td>
     				<td>{{$value->ten_vungmien}}</td>
+					<td>{{$value->noidung}}</td>
     				<td><a href="{{route('home.vungmien.edit',$value->id)}}" class="btn btn-success">Edit</a>
 						 <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-secondary">Delete</a>
 						 <form action="{{route('home.vungmien.destroy',$value->id )}}" method="post">

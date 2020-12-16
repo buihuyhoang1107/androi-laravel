@@ -96,6 +96,11 @@ class VungmiensApi extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vungmien=Vungmiens::find($id);
+        if(is_null($vungmien)){                                                                          
+            return response()->json(["messge"=>"Record not found"],404);
+        }
+        $vungmien->delete();
+        return response()->json(null,204);
     }
 }

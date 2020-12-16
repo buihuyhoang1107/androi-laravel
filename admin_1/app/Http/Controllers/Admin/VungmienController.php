@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Vungmiens;
+use Validator;
 class VungmienController extends Controller
 {
     /**
@@ -39,7 +40,13 @@ class VungmienController extends Controller
      */
     public function store(Request $request,Vungmiens $vungmien)
     {
-        $vungmien->title=$request->title;
+        $rule=['ten_vungmien'=>'required|min:3','noidung'=>'required|min:10'];
+        $validator=Validator::make($request->all(),$rule);
+        if($validator->fails()){
+        return redirect()->route('home.vungmien.create');
+    }
+        $vungmien->ten_vungmien=$request->ten_vungmien;
+        $vungmien->noidung=$request->noidung;
         $vungmien->save();
         return redirect()->route('home.vungmien.index');
     }
@@ -76,7 +83,13 @@ class VungmienController extends Controller
      */
     public function update(Request $request, Vungmiens $vungmien)
     {
-        $vungmien->title=$request->title;
+        $rule=['ten_vungmien'=>'required|min:3','noidung'=>'required|min:10'];
+        $validator=Validator::make($request->all(),$rule);
+        if($validator->fails()){
+        return redirect()->route('home.vungmien.create');
+    }
+        $vungmien->ten_vungmien=$request->ten_vungmien;
+        $vungmien->noidung=$request->noidung;
         $vungmien->save();
         return redirect()->route('home.vungmien.index');
     }
