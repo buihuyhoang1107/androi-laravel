@@ -25,13 +25,15 @@
     		<table class="table table-bordered table-striped">
     			<tr>
     				<th>ID</th>
-    				<th>Titel</th>
+    				<th>Tên</th>
+					<th>Hình ảnh</th>
     				<th>Action</th>
     			</tr>
     			@foreach($categories as $value)
     			<tr>
     				<td>{{$value->id}}</td>
     				<td>{{$value->title}}</td>
+					<td><img src="{{asset('storage/category/'.$value->hinhanh)}}" style="width:150px"></td>
     				<td><a href="{{route('home.categories.edit',$value->id)}}" class="btn btn-success">Edit</a>
 						 <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()" class="btn btn-secondary">Delete</a>
 						 <form action="{{route('home.categories.destroy',$value->id )}}" method="post">

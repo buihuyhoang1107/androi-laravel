@@ -16,7 +16,9 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+        
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -36,6 +38,7 @@ return [
     */
 
     'guards' => [
+       
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -43,8 +46,17 @@ return [
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'Nguoidungs',
             'hash' => false,
+        ],
+        
+        'nguoidung' => [
+            'driver' => 'session',
+            'provider' => 'Nguoidungs',
+        ],
+        'nguoidung-api' => [
+            'driver' => 'token',
+            'provider' => 'Nguoidungs',
         ],
     ],
 
@@ -67,13 +79,21 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
+             'driver' => 'eloquent',
+             'model' => App\User::class,
+         ],
 
-        // 'users' => [
+        'users' => [
+            'driver' => 'database',
+             'table' => 'users',
+         ],
+        'Nguoidungs' => [
+            'driver' => 'eloquent',
+            'model' => App\Nguoidungs::class,
+        ],
+        //   'nguoidungs' => [
         //     'driver' => 'database',
-        //     'table' => 'users',
+        //     'table' => 'nguoidungs',
         // ],
     ],
 
@@ -98,6 +118,11 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'nguoidungs' => [
+            'provider' => 'nguoidungs',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
 

@@ -12,7 +12,7 @@ use Validator;
 class BaivietController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:nguoidung');
     }
     /**
      * Display a listing of the resource.
@@ -21,6 +21,7 @@ class BaivietController extends Controller
      */
     public function index()
     {
+        
         $arr['baiviet']=Baiviets::all();
         return view('admin.baiviet.index')->with($arr);
     }

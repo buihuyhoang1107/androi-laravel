@@ -14,7 +14,7 @@ class CategoriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:nguoidung');
     }
     public function index()
     {
@@ -44,6 +44,19 @@ class CategoriesController extends Controller
         if($validator->fails()){
         return redirect()->route('home.categories.create');
     }
+    if($request->hinhanh->getClientOriginalName())
+        {
+            $ext= $request->hinhanh->getClientOriginalExtension();
+            $file = date('YmdHis').rand(1,9999).'.'.$ext;
+            $request->hinhanh->storeAs('public/category',$file);
+        }
+        else{
+            if(!$category->hinhanh)
+                $file='';
+            else
+                $file=$category->hinhanh;
+        }
+        $category->hinhanh=$file;
         $category->title=$request->title;
         $category->save();
         return redirect()->route('home.categories.index');
@@ -84,8 +97,21 @@ class CategoriesController extends Controller
         $rule=['title'=>'required|min:3',];
         $validator=Validator::make($request->all(),$rule);
         if($validator->fails()){
-        return redirect()->route('home.categories.create');
+        return redirect()->route('home.categories.edit');
         }
+        if(isset($request->hinhanh)&&$request->hinhanh->getClientOriginalName())
+        {
+            $ext= $request->hinhanh->getClientOriginalExtension();
+            $file = date('YmdHis').rand(1,9999).'.'.$ext;
+            $request->hinhanh->storeAs('public/category',$file);
+        }
+        else{
+            if(!$category->hinhanh)
+                $file='';
+            else
+                $file=$category->hinhanh;
+        }
+        $category->hinhanh=$file;
         $category->title=$request->title;
         $category->save();
         return redirect()->route('home.categories.index');
