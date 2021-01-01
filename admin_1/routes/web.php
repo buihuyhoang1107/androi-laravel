@@ -25,4 +25,7 @@ Route::resource('/home/baiviet','Admin\BaivietController',['as'=>'home'])->middl
 Route::resource('/home/nguoidung','Admin\NguoidungController',['as'=>'home'])->middleware('check_admin');
 Route::get('/authlogin','Admin\LoginController@getAuthLogin')->name('getlogin');
 Route::post('/authlogin','Admin\LoginController@postAuthLogin')->name('postlogin');
-
+Route::get('/search/Categories','Admin\CategoriesController@search');
+Route::get('/search/Baiviet','Admin\BaivietController@search');
+Route::get('/search/Nguoidung','Admin\NguoidungController@search');
+Route::get('/search/Vungmien','Admin\VungmienController@search');

@@ -19,6 +19,7 @@ class Nguoidungs extends Authenticatable
         'matkhau',
         'phanquyen',
         'ten',
+        'action',
     ];
     protected $hidden = [
         'password', 'remember_token',

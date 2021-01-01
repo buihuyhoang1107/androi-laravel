@@ -15,7 +15,7 @@ class CheckLogin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guard('nguoidung')->check()&& Auth::guard('nguoidung')->user()->phanquyen==1) {
+        if (Auth::guard('nguoidung')->check()&& Auth::guard('nguoidung')->user()->phanquyen==1&& Auth::guard('nguoidung')->user()->action==0) {
             return $next($request);
         }
         else{

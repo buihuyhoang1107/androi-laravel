@@ -19,9 +19,11 @@ class NguoidungController extends Controller
     }
     public function index()
     {
-        $arr['nguoidung']=Nguoidungs::all();
+        $nguoidung = DB::table('nguoidungs')->where('phanquyen','0')->paginate('5');
+        return view('admin.nguoidung.index',compact('nguoidung'));
+        //$arr['nguoidung']=Nguoidungs::all();
         
-        return view('admin.nguoidung.index')->with($arr);
+        //return view('admin.nguoidung.index')->with($arr);
     }
 
     /**
@@ -115,5 +117,12 @@ class NguoidungController extends Controller
     {
         Nguoidungs::destroy($id);
         return redirect()->route('home.nguoidung.index');
+    }
+    public function search(){
+        $search_text=$_GET['query'];
+        $nguoidung=Nguoidungs::where('ten','LIKE','%'.$search_text.'%')->where('phanquyen','0')->paginate('4');
+        if(!$search_text)
+            return redirect()->route('home.nguoidung.index');
+        return view('admin.nguoidung.index',compact('nguoidung'));
     }
 }

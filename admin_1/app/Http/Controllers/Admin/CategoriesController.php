@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
 use Validator;
+use DB;
 class CategoriesController extends Controller
 {
     /**
@@ -18,8 +19,10 @@ class CategoriesController extends Controller
     }
     public function index()
     {
-        $arr['categories']=Category::all();
-        return view('admin.categories.index')->with($arr);
+        //$category=Baiviets::with('category')->paginate(2); 
+        $categories = DB::table('categories')->paginate('4');
+        return view('admin.categories.index',compact('categories'));
+      
     }
     /**
      * Show the form for creating a new resource.
@@ -127,5 +130,13 @@ class CategoriesController extends Controller
     {
         Category::destroy($id);
         return redirect()->route('home.categories.index');
+    }
+
+    public function search(){
+        $search_text=$_GET['query'];
+        $categories=Category::where('title','LIKE','%'.$search_text.'%')->paginate('4');
+        if(!$search_text)
+            return redirect()->route('home.categories.index');
+        return view('admin.categories.index',compact('categories'));
     }
 }

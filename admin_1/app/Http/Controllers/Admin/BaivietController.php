@@ -21,9 +21,12 @@ class BaivietController extends Controller
      */
     public function index()
     {
-        
-        $arr['baiviet']=Baiviets::all();
-        return view('admin.baiviet.index')->with($arr);
+        // $arr['baiviet']=Baiviets::all();
+        // return view('admin.baiviet.index')->with($arr);
+        $baiviet=Baiviets::with('category')->paginate(2); 
+        $category=Category::all();
+        return view('admin.baiviet.index',compact('category','baiviet'));
+        //return view('admin.baiviet.index',['baiviet'=>$data]);
     }
 
     /**
@@ -155,5 +158,13 @@ class BaivietController extends Controller
     {
         Baiviets::destroy($id);
         return redirect()->route('home.baiviet.index');
+    }
+    public function search(){
+        $search_text=$_GET['query'];
+        $category=Category::all();
+        $baiviet=Baiviets::where('ten','LIKE','%'.$search_text.'%')->with('category')->paginate('2');
+        if($search_text == null)
+        return redirect()->route('home.baiviet.index');
+        return view('admin.baiviet.index',compact('category','baiviet'));
     }
 }
