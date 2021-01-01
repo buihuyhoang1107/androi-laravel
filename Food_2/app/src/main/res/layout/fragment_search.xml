@@ -1,325 +1,360 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-    <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="10dp"
-        >
-        <SearchView
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="Tìm kiếm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></SearchView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="60px"
+        android:text="Món ngon phổ biến"
+        android:textColor="#070707"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+    </TextView>
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="40dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:context=".MainActivity">
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:queryHint="Tìm kiếm"
-            android:iconifiedByDefault="false"
-            android:id="@+id/searchView"
-            >
-        </SearchView>
-<!--        <ListView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="fill_parent"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:id="@+id/myList"-->
-<!--            >-->
-<!--        </ListView>-->
+            android:orientation="vertical"
+            android:paddingTop="10dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="60px"
-            android:text="Món ngon phổ biến"
-            android:textColor="#070707"
-            android:textSize="24sp">
+            <!--        <ListView-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="fill_parent"-->
+            <!--            android:layout_marginTop="10dp"-->
+            <!--            android:id="@+id/myList"-->
+            <!--            >-->
+            <!--        </ListView>-->
 
-        </TextView>
-        <GridLayout
-            android:rowCount="3"
-            android:columnCount="2"
-            android:alignmentMode="alignMargins"
-            android:columnOrderPreserved="false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <!--            <GridLayout-->
+            <!--                android:id="@+id/Main_Category_view"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:alignmentMode="alignMargins"-->
+            <!--                android:columnCount="2"-->
+            <!--                android:columnOrderPreserved="false"-->
+            <!--                android:rowCount="3">-->
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                >
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_rowWeight="1"-->
+<!--                                android:layout_columnWeight="1"-->
+<!--                                android:layout_margin="12dp"-->
+<!--                                app:cardCornerRadius="12dp"-->
+<!--                                app:cardElevation="6dp">-->
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/thitheo"
-                        />
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Thịt Heo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                >
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:gravity="center"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="16dp">-->
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/thitbo"></ImageView>
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Thịt bò"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                >
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+<!--                                    <ImageView-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="100dp"-->
+<!--                                        android:src="@drawable/thitheo" />-->
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/monca"></ImageView>
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Món cá"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                >
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_marginTop="12dp"-->
+<!--                                        android:text="Thịt Heo"-->
+<!--                                        android:textColor="#6f6f6f"-->
+<!--                                        android:textSize="18sp"></TextView>-->
+<!--                                </LinearLayout>-->
+<!--                            </androidx.cardview.widget.CardView>-->
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/monchay"></ImageView>
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Món chay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                >
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <!--                <androidx.cardview.widget.CardView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_rowWeight="1"-->
+            <!--                    android:layout_columnWeight="1"-->
+            <!--                    android:layout_margin="12dp"-->
+            <!--                    app:cardCornerRadius="12dp"-->
+            <!--                    app:cardElevation="6dp">-->
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/montom"></ImageView>
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Món tôm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                >
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="16dp">-->
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/monlau"></ImageView>
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Món lẩu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                >
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <!--                        <ImageView-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="100dp"-->
+            <!--                            android:src="@drawable/thitbo"></ImageView>-->
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/monvit"></ImageView>
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Món vịt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                >
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <!--                        <TextView-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_marginTop="12dp"-->
+            <!--                            android:text="Thịt bò"-->
+            <!--                            android:textColor="#6f6f6f"-->
+            <!--                            android:textSize="18sp"></TextView>-->
+            <!--                    </LinearLayout>-->
+            <!--                </androidx.cardview.widget.CardView>-->
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/anvat"></ImageView>
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Ăn vặt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                >
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <!--                <androidx.cardview.widget.CardView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_rowWeight="1"-->
+            <!--                    android:layout_columnWeight="1"-->
+            <!--                    android:layout_margin="12dp"-->
+            <!--                    app:cardCornerRadius="12dp"-->
+            <!--                    app:cardElevation="6dp">-->
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:src="@drawable/thitheo"
-                        />
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Thịt Heo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </GridLayout>
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="16dp">-->
 
-    </LinearLayout>
+            <!--                        <ImageView-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="100dp"-->
+            <!--                            android:src="@drawable/monca"></ImageView>-->
 
+            <!--                        <TextView-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_marginTop="12dp"-->
+            <!--                            android:text="Món cá"-->
+            <!--                            android:textColor="#6f6f6f"-->
+            <!--                            android:textSize="18sp"></TextView>-->
+            <!--                    </LinearLayout>-->
+            <!--                </androidx.cardview.widget.CardView>-->
 
-</ScrollView>
+            <!--                <androidx.cardview.widget.CardView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_rowWeight="1"-->
+            <!--                    android:layout_columnWeight="1"-->
+            <!--                    android:layout_margin="12dp"-->
+            <!--                    app:cardCornerRadius="12dp"-->
+            <!--                    app:cardElevation="6dp">-->
+
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="16dp">-->
+
+            <!--                        <ImageView-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="100dp"-->
+            <!--                            android:src="@drawable/monchay"></ImageView>-->
+
+            <!--                        <TextView-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_marginTop="12dp"-->
+            <!--                            android:text="Món chay"-->
+            <!--                            android:textColor="#6f6f6f"-->
+            <!--                            android:textSize="18sp"></TextView>-->
+            <!--                    </LinearLayout>-->
+            <!--                </androidx.cardview.widget.CardView>-->
+
+            <!--                <androidx.cardview.widget.CardView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_rowWeight="1"-->
+            <!--                    android:layout_columnWeight="1"-->
+            <!--                    android:layout_margin="12dp"-->
+            <!--                    app:cardCornerRadius="12dp"-->
+            <!--                    app:cardElevation="6dp">-->
+
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="16dp">-->
+
+            <!--                        <ImageView-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="100dp"-->
+            <!--                            android:src="@drawable/montom"></ImageView>-->
+
+            <!--                        <TextView-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_marginTop="12dp"-->
+            <!--                            android:text="Món tôm"-->
+            <!--                            android:textColor="#6f6f6f"-->
+            <!--                            android:textSize="18sp"></TextView>-->
+            <!--                    </LinearLayout>-->
+            <!--                </androidx.cardview.widget.CardView>-->
+
+            <!--                <androidx.cardview.widget.CardView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_rowWeight="1"-->
+            <!--                    android:layout_columnWeight="1"-->
+            <!--                    android:layout_margin="12dp"-->
+            <!--                    app:cardCornerRadius="12dp"-->
+            <!--                    app:cardElevation="6dp">-->
+
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="16dp">-->
+
+            <!--                        <ImageView-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="100dp"-->
+            <!--                            android:src="@drawable/monlau"></ImageView>-->
+
+            <!--                        <TextView-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_marginTop="12dp"-->
+            <!--                            android:text="Món lẩu"-->
+            <!--                            android:textColor="#6f6f6f"-->
+            <!--                            android:textSize="18sp"></TextView>-->
+            <!--                    </LinearLayout>-->
+            <!--                </androidx.cardview.widget.CardView>-->
+
+            <!--                <androidx.cardview.widget.CardView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_rowWeight="1"-->
+            <!--                    android:layout_columnWeight="1"-->
+            <!--                    android:layout_margin="12dp"-->
+            <!--                    app:cardCornerRadius="12dp"-->
+            <!--                    app:cardElevation="6dp">-->
+
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="16dp">-->
+
+            <!--                        <ImageView-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="100dp"-->
+            <!--                            android:src="@drawable/monvit"></ImageView>-->
+
+            <!--                        <TextView-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_marginTop="12dp"-->
+            <!--                            android:text="Món vịt"-->
+            <!--                            android:textColor="#6f6f6f"-->
+            <!--                            android:textSize="18sp"></TextView>-->
+            <!--                    </LinearLayout>-->
+            <!--                </androidx.cardview.widget.CardView>-->
+
+            <!--                <androidx.cardview.widget.CardView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_rowWeight="1"-->
+            <!--                    android:layout_columnWeight="1"-->
+            <!--                    android:layout_margin="12dp"-->
+            <!--                    app:cardCornerRadius="12dp"-->
+            <!--                    app:cardElevation="6dp">-->
+
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="16dp">-->
+
+            <!--                        <ImageView-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="100dp"-->
+            <!--                            android:src="@drawable/anvat"></ImageView>-->
+
+            <!--                        <TextView-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_marginTop="12dp"-->
+            <!--                            android:text="Ăn vặt"-->
+            <!--                            android:textColor="#6f6f6f"-->
+            <!--                            android:textSize="18sp"></TextView>-->
+            <!--                    </LinearLayout>-->
+            <!--                </androidx.cardview.widget.CardView>-->
+
+            <!--                <androidx.cardview.widget.CardView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_rowWeight="1"-->
+            <!--                    android:layout_columnWeight="1"-->
+            <!--                    android:layout_margin="12dp"-->
+            <!--                    app:cardCornerRadius="12dp"-->
+            <!--                    app:cardElevation="6dp">-->
+
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="16dp">-->
+
+            <!--                        <ImageView-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="100dp"-->
+            <!--                            android:src="@drawable/thitheo" />-->
+
+            <!--                        <TextView-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_marginTop="12dp"-->
+            <!--                            android:text="Thịt Heo"-->
+            <!--                            android:textColor="#6f6f6f"-->
+            <!--                            android:textSize="18sp"></TextView>-->
+            <!--                    </LinearLayout>-->
+            <!--                </androidx.cardview.widget.CardView>-->
+            <!--            </GridLayout>-->
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
