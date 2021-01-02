@@ -46,10 +46,7 @@ public class SearchFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
                         TextView test = getView().findViewById(R.id.textView2);
-                        test.setText(response.substring(0, 100));
-                        ;
                     }
                 },new Response.ErrorListener() {
                     @Override
@@ -58,6 +55,7 @@ public class SearchFragment extends Fragment {
                         test.setText("That didn't work!");
                     }
         });
+        //call api
         queue.add(stringRequest);
     }
 
