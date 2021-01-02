@@ -45,18 +45,6 @@
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
@@ -167,10 +155,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{url('/dashboard/dist/img/user3-128x128.jpg')}}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{url('/dashboard/dist/img/user1-128x128.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">DoThanhSon</a>
+          <a href="#" class="d-block">{{Auth::guard('nguoidung')->user()->ten}}</a>
         </div>
       </div>
 
@@ -229,9 +217,20 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('home.nguoidung.index')}}" class="nav-link 
+            @if($segment=='nguoidung')
+            active
+            @endif">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Người dùng
+              </p>
+            </a>
+          </li>
           <li class="nav-header">Action</li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}"
+          <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                      <i class="nav-icon far fa-circle text-danger"></i>
@@ -240,7 +239,7 @@
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
-                                    </form>s
+                                    </form>
             </a>
           </li>
         
@@ -307,5 +306,7 @@
 <script src="{{asset('/dashboard/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('/dashboard/dist/js/demo.js')}}"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+@yield('scripts')
 </body>
 </html>

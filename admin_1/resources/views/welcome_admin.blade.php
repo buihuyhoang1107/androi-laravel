@@ -37,27 +37,15 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-				<ul class="navbar-nav ml-auto">
-
-					
-						@if (Route::has('login'))
-
-							@auth
-							<a class="nav-link" href="{{ url('/home') }}">Home</a>
-							@else
-							<li class="nav-item @@about__active">
-							<a class="nav-link" href="{{ route('login') }}">Login</a>
-							</li>	
-							@if (Route::has('register'))
-							<li class="nav-item @@about__active">
-							<a class="nav-link" href="{{ route('register') }}">Register</a>
-							</li>
+				<ul class="navbar-nav ml-auto">		
+						@if(Auth::guard('nguoidung')->check())
+							<a class="nav-link" href="{{ route('home') }}">Home</a>
 							@endif
-							@endauth
-						
-						@endif
-					
-
+							@if(!Auth::guard('nguoidung')->check())
+							<li class="nav-item @@about__active">
+							<a class="nav-link" href="{{ route('getlogin') }}">Login</a>
+							</li>						
+							@endif
 				</ul>
 			</div>
 		</nav>

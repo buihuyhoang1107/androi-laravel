@@ -18,13 +18,23 @@
 
 <section class="content">
 	<div class="container-fluid">
-		<form method="post" action="{{route('home.categories.store')}}">
+		<form method="post" runat="server" action="{{route('home.categories.store')}}" enctype="multipart/form-data">
 			<input type="hidden" name="_token" value="{{csrf_token()}}">
 			<div class="form-group">	
 				<div class="row">	
 					<label class="col-md-3">Title</label>
-					<div class="col-md-6"><input type="text" name="title" class="form-control"></div>
+					<div class="col-md-6"><input type="text" name="title" class="form-control" required></div>
 					<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="form-group">	 
+				<div class="row">	
+					<label class="col-md-3">Hình ảnh</label>
+					<div class="col-md-6">
+					<input type='file' id="imgInp" name="hinhanh"/>
+					<br/>
+ 						 <img id="blah" src="#" alt="your image" class=""width="200" height="150" />
+					</div> 
 				</div>
 			</div>
 			<div class="form-group">
@@ -33,4 +43,23 @@
 		</form>
 	</div>
 </section>
+@endsection
+@section('scripts')
+<script>
+    function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
+
+$("#imgInp").change(function() {
+  readURL(this);
+});
+</script>
 @endsection

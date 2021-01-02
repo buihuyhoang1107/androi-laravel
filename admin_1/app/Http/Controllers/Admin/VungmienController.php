@@ -6,20 +6,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Vungmiens;
 use Validator;
+use DB;
 class VungmienController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responses
      */
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:nguoidung');
     }
     public function index()
     {
-        $arr['vungmien']=Vungmiens::all();
-        return view('admin.vungmien.index')->with($arr);
+        $vungmien = DB::table('vungmiens')->paginate('3');
+        return view('admin.vungmien.index',compact('vungmien'));
+        //$arr['vungmien']=Vungmiens::all();
+        //return view('admin.vungmien.index')->with($arr);
     }
 
     /**
@@ -104,5 +107,12 @@ class VungmienController extends Controller
     {
         Vungmiens::destroy($id);
         return redirect()->route('home.vungmien.index');
+    }
+    public function search(){
+        $search_text=$_GET['query'];
+        $vungmien=Vungmiens::where('ten_vungmien','LIKE','%'.$search_text.'%')->paginate('3');
+        if(!$search_text)
+            return redirect()->route('home.vungmien.index');
+        return view('admin.vungmien.index',compact('vungmien'));
     }
 }

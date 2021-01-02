@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
 use Validator;
+use DB;
 class CategoriesController extends Controller
 {
     /**
@@ -14,12 +15,14 @@ class CategoriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:nguoidung');
     }
     public function index()
     {
-        $arr['categories']=Category::all();
-        return view('admin.categories.index')->with($arr);
+        //$category=Baiviets::with('category')->paginate(2); 
+        $categories = DB::table('categories')->paginate('4');
+        return view('admin.categories.index',compact('categories'));
+      
     }
     /**
      * Show the form for creating a new resource.
@@ -44,6 +47,19 @@ class CategoriesController extends Controller
         if($validator->fails()){
         return redirect()->route('home.categories.create');
     }
+    if($request->hinhanh->getClientOriginalName())
+        {
+            $ext= $request->hinhanh->getClientOriginalExtension();
+            $file = date('YmdHis').rand(1,9999).'.'.$ext;
+            $request->hinhanh->storeAs('public/category',$file);
+        }
+        else{
+            if(!$category->hinhanh)
+                $file='';
+            else
+                $file=$category->hinhanh;
+        }
+        $category->hinhanh=$file;
         $category->title=$request->title;
         $category->save();
         return redirect()->route('home.categories.index');
@@ -84,8 +100,21 @@ class CategoriesController extends Controller
         $rule=['title'=>'required|min:3',];
         $validator=Validator::make($request->all(),$rule);
         if($validator->fails()){
-        return redirect()->route('home.categories.create');
+        return redirect()->route('home.categories.edit');
         }
+        if(isset($request->hinhanh)&&$request->hinhanh->getClientOriginalName())
+        {
+            $ext= $request->hinhanh->getClientOriginalExtension();
+            $file = date('YmdHis').rand(1,9999).'.'.$ext;
+            $request->hinhanh->storeAs('public/category',$file);
+        }
+        else{
+            if(!$category->hinhanh)
+                $file='';
+            else
+                $file=$category->hinhanh;
+        }
+        $category->hinhanh=$file;
         $category->title=$request->title;
         $category->save();
         return redirect()->route('home.categories.index');
@@ -101,5 +130,13 @@ class CategoriesController extends Controller
     {
         Category::destroy($id);
         return redirect()->route('home.categories.index');
+    }
+
+    public function search(){
+        $search_text=$_GET['query'];
+        $categories=Category::where('title','LIKE','%'.$search_text.'%')->paginate('4');
+        if(!$search_text)
+            return redirect()->route('home.categories.index');
+        return view('admin.categories.index',compact('categories'));
     }
 }
