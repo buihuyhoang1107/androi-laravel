@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.food_2.Model.Category;
@@ -34,6 +35,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(@NonNull CategoryAdapter.CategoryViewHolder holder, int position) {
         holder.title.setText(categories.get(position).getTitle());
         Picasso.get().load(categories.get(position).getImg()).into(holder.img);
+        holder.item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
     }
 
     @Override
@@ -44,11 +51,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
         private ImageView img;
         private TextView title;
+        private CardView item;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.item_search_img);
             title = itemView.findViewById(R.id.item_search_title);
+            item = itemView.findViewById(R.id.cardview_id);
         }
     }
 }
