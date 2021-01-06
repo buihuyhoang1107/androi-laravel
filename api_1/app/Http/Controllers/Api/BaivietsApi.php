@@ -16,10 +16,7 @@ class BaivietsApi extends Controller
      */
     public function index()
     {
-        $data = DB::table('baiviets')
-        ->join('vungmiens','baiviets.vungmien_id','=','vungmiens.id')
-        ->join('categories','baiviets.category_id','=','categories.id')
-        ->get();
+        $data = DB::table('baiviets')->get();
 
         return response()->json($data,200);
     }
