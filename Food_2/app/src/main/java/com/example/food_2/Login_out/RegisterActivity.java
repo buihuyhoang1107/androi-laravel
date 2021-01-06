@@ -1,4 +1,4 @@
-package com.example.food_2;
+package com.example.food_2.Login_out;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.SearchView;
+
+import com.example.food_2.R;
 
 public class RegisterActivity extends AppCompatActivity {
 

@@ -1,16 +1,20 @@
 package com.example.food_2.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.food_2.Model.Category;
+import com.example.food_2.Food.ListFoodCaregoryActivity;
+import com.example.food_2.Model.BaiVietModel;
+import com.example.food_2.Model.CategoryModel;
 import com.example.food_2.R;
 import com.squareup.picasso.Picasso;
 
@@ -18,9 +22,9 @@ import java.util.ArrayList;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
-    private ArrayList<Category> categories;
+    private ArrayList<CategoryModel> categories;
 
-    public CategoryAdapter(ArrayList<Category> categories) {
+    public CategoryAdapter(ArrayList<CategoryModel> categories) {
         this.categories = categories;
     }
 
@@ -32,13 +36,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryAdapter.CategoryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CategoryAdapter.CategoryViewHolder holder, final int position) {
         holder.title.setText(categories.get(position).getTitle());
         Picasso.get().load(categories.get(position).getImg()).into(holder.img);
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Toast.makeText(v.getContext(),String.valueOf(categories.get(position).getId()) + categories.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), ListFoodCaregoryActivity.class);
+                intent.putExtra("tilte_Category",holder.title.getText().toString());
+                intent.putExtra("id_Category",categories.get(position).getId());
+                v.getContext().startActivity(intent);
             }
         });
     }
@@ -57,7 +65,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             super(itemView);
             img = itemView.findViewById(R.id.item_search_img);
             title = itemView.findViewById(R.id.item_search_title);
-            item = itemView.findViewById(R.id.cardview_id);
+            item = itemView.findViewById(R.id.cardview_Item_Search);
         }
     }
 }

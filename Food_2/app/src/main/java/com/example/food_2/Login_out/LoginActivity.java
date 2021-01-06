@@ -1,12 +1,12 @@
-package com.example.food_2;
+package com.example.food_2.Login_out;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.food_2.R;
 
 public class LoginActivity extends AppCompatActivity {
     @Override

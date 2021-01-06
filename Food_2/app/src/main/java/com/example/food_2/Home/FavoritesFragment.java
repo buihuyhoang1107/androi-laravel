@@ -1,4 +1,4 @@
-package com.example.food_2;
+package com.example.food_2.Home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,10 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class HomeFragment extends Fragment {
+import com.example.food_2.R;
+
+public class FavoritesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home,container,false);
+        return inflater.inflate(R.layout.fragment_favorites,container,false);
     }
 }
