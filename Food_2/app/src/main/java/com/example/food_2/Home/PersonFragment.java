@@ -1,4 +1,4 @@
-package com.example.food_2;
+package com.example.food_2.Home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.food_2.R;
 
 public class PersonFragment extends Fragment {
     @Nullable

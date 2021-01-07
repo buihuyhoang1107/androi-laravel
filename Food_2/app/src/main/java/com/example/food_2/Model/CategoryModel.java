@@ -1,8 +1,9 @@
 package com.example.food_2.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Category {
+public class CategoryModel implements Serializable {
     private int id;
     private String title;
     private int action;
@@ -10,11 +11,11 @@ public class Category {
     private Date updated_at;
     private String img;
 
-    public Category(){
+    public CategoryModel(){
 
     }
 
-    public Category(int id, int action, Date created_at, Date updated_at, String img) {
+    public CategoryModel(int id, int action, Date created_at, Date updated_at, String img) {
         this.id = id;
         this.action = action;
         this.created_at = created_at;

@@ -1,4 +1,4 @@
-package com.example.food_2;
+package com.example.food_2.Home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +19,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.food_2.Adapter.CategoryAdapter;
-import com.example.food_2.Model.Category;
+import com.example.food_2.Config;
+import com.example.food_2.Model.CategoryModel;
+import com.example.food_2.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,13 +30,13 @@ import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
-    private ArrayList<Category> categories;
+    private ArrayList<CategoryModel> categories;
     private RecyclerView recyclerView;
     private CategoryAdapter adapter;
 
     public SearchFragment() {
         super();
-        categories = new ArrayList<Category>();
+        categories = new ArrayList<CategoryModel>();
     }
 
     @Nullable
@@ -51,7 +53,7 @@ public class SearchFragment extends Fragment {
 
     private void getDataCategory() {
         RequestQueue queue = Volley.newRequestQueue(getActivity());
-        String url = "https://coderthanhson.000webhostapp.com/api/categories";
+        String url = Config.URL_API + "api/categories";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -64,7 +66,7 @@ public class SearchFragment extends Fragment {
                             JSONArray jArray = new JSONArray(response);
                             if (jArray != null) {
                                 for (int i=0;i<jArray.length();i++){
-                                    Category category = new Category();
+                                    CategoryModel category = new CategoryModel();
                                     category.setTitle(jArray.getJSONObject(i).getString("title"));
                                     category.setImg(jArray.getJSONObject(i).getString("hinhanh"));
                                     category.setId(jArray.getJSONObject(i).getInt("id"));
