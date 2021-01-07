@@ -1,5 +1,6 @@
 package com.example.food_2.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +12,20 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.food_2.Config;
+import com.example.food_2.Food.FoodInforActivity;
 import com.example.food_2.Model.BaiVietModel;
 import com.example.food_2.R;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONStringer;
 
 import java.util.ArrayList;
 
 public class BaiVietAdapter extends RecyclerView.Adapter<BaiVietAdapter.BaiVietViewHolder> {
 
     private ArrayList<BaiVietModel> baiVietModels;
+    public static String KEY_BAIVIET = "key_baiviet";
 
     public BaiVietAdapter(ArrayList<BaiVietModel> baiVietModels) {
         this.baiVietModels = baiVietModels;
@@ -35,11 +41,15 @@ public class BaiVietAdapter extends RecyclerView.Adapter<BaiVietAdapter.BaiVietV
     @Override
     public void onBindViewHolder(@NonNull BaiVietAdapter.BaiVietViewHolder holder, final int position) {
         holder.title.setText(baiVietModels.get(position).getTen());
-        Picasso.get().load(baiVietModels.get(position).getHinhanh()).into(holder.img);
+        final String img_Api = Config.URL_API + "storage/baiviet/" + baiVietModels.get(position).getHinhanh();
+        Picasso.get().load(img_Api).into(holder.img);
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(),String.valueOf(baiVietModels.get(position).getId()) + baiVietModels.get(position).getTen(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), FoodInforActivity.class);
+                intent.putExtra(KEY_BAIVIET, baiVietModels.get(position));
+                v.getContext().startActivity(intent);
             }
         });
     }

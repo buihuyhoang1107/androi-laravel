@@ -15,8 +15,10 @@
 
         <ImageView
             android:id="@+id/imgListFoodAnhitem"
-            android:layout_width="124dp"
-            android:layout_height="125dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />

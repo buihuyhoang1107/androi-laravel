@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.food_2.Config;
 import com.example.food_2.Food.ListFoodCaregoryActivity;
 import com.example.food_2.Model.BaiVietModel;
 import com.example.food_2.Model.CategoryModel;
@@ -23,6 +24,9 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
     private ArrayList<CategoryModel> categories;
+    public static final String TITLE_CATEGORY = "tilte_Category";
+    public static final String ID_CATEGORY = "id_Category";
+
 
     public CategoryAdapter(ArrayList<CategoryModel> categories) {
         this.categories = categories;
@@ -38,14 +42,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull final CategoryAdapter.CategoryViewHolder holder, final int position) {
         holder.title.setText(categories.get(position).getTitle());
-        Picasso.get().load(categories.get(position).getImg()).into(holder.img);
+        final String img_Api = Config.URL_API + "storage/category/" + categories.get(position).getImg();
+        Picasso.get().load(img_Api).into(holder.img);
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(),String.valueOf(categories.get(position).getId()) + categories.get(position).getTitle(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), ListFoodCaregoryActivity.class);
-                intent.putExtra("tilte_Category",holder.title.getText().toString());
-                intent.putExtra("id_Category",categories.get(position).getId());
+                intent.putExtra(TITLE_CATEGORY,holder.title.getText().toString());
+                intent.putExtra(ID_CATEGORY,categories.get(position).getId());
                 v.getContext().startActivity(intent);
             }
         });

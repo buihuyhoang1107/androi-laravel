@@ -1,8 +1,9 @@
 package com.example.food_2.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CategoryModel {
+public class CategoryModel implements Serializable {
     private int id;
     private String title;
     private int action;

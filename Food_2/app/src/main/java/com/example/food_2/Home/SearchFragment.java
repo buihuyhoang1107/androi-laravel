@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.food_2.Adapter.CategoryAdapter;
+import com.example.food_2.Config;
 import com.example.food_2.Model.CategoryModel;
 import com.example.food_2.R;
 
@@ -52,7 +53,7 @@ public class SearchFragment extends Fragment {
 
     private void getDataCategory() {
         RequestQueue queue = Volley.newRequestQueue(getActivity());
-        String url = "https://coderthanhson.000webhostapp.com/api/categories";
+        String url = Config.URL_API + "api/categories";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override

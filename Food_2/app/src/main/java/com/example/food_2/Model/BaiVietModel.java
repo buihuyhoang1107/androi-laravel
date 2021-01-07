@@ -1,6 +1,8 @@
 package com.example.food_2.Model;
 
-public class BaiVietModel {
+import java.io.Serializable;
+
+public class BaiVietModel implements Serializable {
     private int id;
     private String ten;
     private String nguyenlieu;
@@ -9,13 +11,12 @@ public class BaiVietModel {
     private String cachdung;
     private int category_id;
     private int vungmien_id;
-    private String noidung;
     private String hinhanh;
 
     public BaiVietModel() {
     }
 
-    public BaiVietModel(int id, String ten, String nguyenlieu, String soche, String thuchien, String cachdung, int category_id, int vungmien_id, String noidung, String hinhanh) {
+    public BaiVietModel(int id, String ten, String nguyenlieu, String soche, String thuchien, String cachdung, int category_id, int vungmien_id, String hinhanh) {
         this.id = id;
         this.ten = ten;
         this.nguyenlieu = nguyenlieu;
@@ -24,7 +25,6 @@ public class BaiVietModel {
         this.cachdung = cachdung;
         this.category_id = category_id;
         this.vungmien_id = vungmien_id;
-        this.noidung = noidung;
         this.hinhanh = hinhanh;
     }
 
@@ -90,14 +90,6 @@ public class BaiVietModel {
 
     public void setVungmien_id(int vungmien_id) {
         this.vungmien_id = vungmien_id;
-    }
-
-    public String getNoidung() {
-        return noidung;
-    }
-
-    public void setNoidung(String noidung) {
-        this.noidung = noidung;
     }
 
     public String getHinhanh() {

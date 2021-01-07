@@ -17,6 +17,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.food_2.Adapter.BaiVietAdapter;
 import com.example.food_2.Adapter.CategoryAdapter;
+import com.example.food_2.Config;
+import com.example.food_2.Home.SearchFragment;
 import com.example.food_2.Model.BaiVietModel;
 import com.example.food_2.Model.CategoryModel;
 import com.example.food_2.R;
@@ -45,15 +47,15 @@ public class ListFoodCaregoryActivity extends AppCompatActivity {
 
         Title = findViewById(R.id.txtListFoodCategory);
         Intent intent = getIntent();
-        Title.setText(intent.getStringExtra("tilte_Category"));
-        idCategory = intent.getIntExtra("id_Category",0);
+        Title.setText(intent.getStringExtra(CategoryAdapter.TITLE_CATEGORY));
+        idCategory = intent.getIntExtra(CategoryAdapter.ID_CATEGORY,0);
         getDataFood();
 
     }
 
     private void getDataFood() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String url = "https://coderthanhson.000webhostapp.com/api/baiviets";
+        String url = Config.URL_API + "api/baiviets";
         StringRequest request = new StringRequest(
                 Request.Method.GET,
                 url,
@@ -80,7 +82,6 @@ public class ListFoodCaregoryActivity extends AppCompatActivity {
                                     baiVietModel.setCachdung(jArray.getJSONObject(i).getString("cachdung"));
                                     baiVietModel.setHinhanh(jArray.getJSONObject(i).getString("hinhanh"));
                                     baiVietModel.setVungmien_id(jArray.getJSONObject(i).getInt("vungmien_id"));
-                                    baiVietModel.setNoidung(jArray.getJSONObject(i).getString("noidung"));
 
                                     baiVietModels.add(baiVietModel);
                                 }
