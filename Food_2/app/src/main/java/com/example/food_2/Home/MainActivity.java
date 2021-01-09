@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         //Tạo các button bấm
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
@@ -27,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         //Xuất hiện fragment đầu tiên
         Fragment fragment = new SearchFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
-
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.nav_person:
                             selectedFragment = new PersonFragment();
                             break;
+                        default:break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
                     return true;

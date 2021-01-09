@@ -1,5 +1,6 @@
 package com.example.food_2.Food;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -36,10 +38,30 @@ public class ListFoodCaregoryActivity extends AppCompatActivity {
     private TextView Title;
     private int idCategory;
 
+    private CategoryModel categoryModel;
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_food_caregory);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        getSupportActionBar().setTitle("Danh sách món ăn");
 
         baiVietModels = new ArrayList<BaiVietModel>();
         recyclerView = findViewById(R.id.rcvListFood);
@@ -47,8 +69,10 @@ public class ListFoodCaregoryActivity extends AppCompatActivity {
 
         Title = findViewById(R.id.txtListFoodCategory);
         Intent intent = getIntent();
-        Title.setText(intent.getStringExtra(CategoryAdapter.TITLE_CATEGORY));
-        idCategory = intent.getIntExtra(CategoryAdapter.ID_CATEGORY,0);
+        categoryModel = (CategoryModel) intent.getSerializableExtra(CategoryAdapter.KEY_CATEGORY);
+        Title.setText(categoryModel.getTitle());
+        idCategory = categoryModel.getId();
+
         getDataFood();
 
     }
@@ -101,7 +125,7 @@ public class ListFoodCaregoryActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
     private void configRCV() {
-        adapter = new BaiVietAdapter(baiVietModels);
+        adapter = new BaiVietAdapter(baiVietModels,categoryModel);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

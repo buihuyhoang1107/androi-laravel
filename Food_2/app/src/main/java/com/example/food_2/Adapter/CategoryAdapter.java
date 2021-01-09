@@ -24,8 +24,7 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
     private ArrayList<CategoryModel> categories;
-    public static final String TITLE_CATEGORY = "tilte_Category";
-    public static final String ID_CATEGORY = "id_Category";
+    public static final String KEY_CATEGORY = "key_Category";
 
 
     public CategoryAdapter(ArrayList<CategoryModel> categories) {
@@ -49,8 +48,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             public void onClick(View v) {
                 Toast.makeText(v.getContext(),String.valueOf(categories.get(position).getId()) + categories.get(position).getTitle(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), ListFoodCaregoryActivity.class);
-                intent.putExtra(TITLE_CATEGORY,holder.title.getText().toString());
-                intent.putExtra(ID_CATEGORY,categories.get(position).getId());
+                intent.putExtra(KEY_CATEGORY,categories.get(position));
                 v.getContext().startActivity(intent);
             }
         });
@@ -58,7 +56,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        try {
+            return categories.size();
+        }
+        catch (Exception err){
+            return 0;
+        }
     }
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder {

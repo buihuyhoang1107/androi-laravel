@@ -49,6 +49,12 @@ public class SearchFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         getDataCategory();
+
+        TextView test = getView().findViewById(R.id.textView2);
+        test.setText("Loại món ăn");
+
+        recyclerView = getView().findViewById(R.id.fragment_search_RCV);
+
     }
 
     private void getDataCategory() {
@@ -93,7 +99,6 @@ public class SearchFragment extends Fragment {
 
     private void configRCV() {
         adapter = new CategoryAdapter(categories);
-        recyclerView = getView().findViewById(R.id.fragment_search_RCV);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
     }

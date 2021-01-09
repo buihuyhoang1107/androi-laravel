@@ -15,20 +15,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.food_2.Config;
 import com.example.food_2.Food.FoodInforActivity;
 import com.example.food_2.Model.BaiVietModel;
+import com.example.food_2.Model.CategoryModel;
 import com.example.food_2.R;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONStringer;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class BaiVietAdapter extends RecyclerView.Adapter<BaiVietAdapter.BaiVietViewHolder> {
 
     private ArrayList<BaiVietModel> baiVietModels;
+    private CategoryModel categoryModel;
     public static String KEY_BAIVIET = "key_baiviet";
+    public static String KEY_CATEGORY = "key_category";
 
-    public BaiVietAdapter(ArrayList<BaiVietModel> baiVietModels) {
+    public BaiVietAdapter(ArrayList<BaiVietModel> baiVietModels, CategoryModel categoryModel) {
         this.baiVietModels = baiVietModels;
+        this.categoryModel = categoryModel;
+
     }
 
     @NonNull
@@ -49,6 +55,7 @@ public class BaiVietAdapter extends RecyclerView.Adapter<BaiVietAdapter.BaiVietV
                 Toast.makeText(v.getContext(),String.valueOf(baiVietModels.get(position).getId()) + baiVietModels.get(position).getTen(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), FoodInforActivity.class);
                 intent.putExtra(KEY_BAIVIET, baiVietModels.get(position));
+                intent.putExtra(KEY_CATEGORY, categoryModel);
                 v.getContext().startActivity(intent);
             }
         });
@@ -56,7 +63,11 @@ public class BaiVietAdapter extends RecyclerView.Adapter<BaiVietAdapter.BaiVietV
 
     @Override
     public int getItemCount() {
-        return baiVietModels.size();
+        try{
+            return baiVietModels.size();
+        }catch (Exception err){
+            return 0;
+        }
     }
 
     public class BaiVietViewHolder extends RecyclerView.ViewHolder {
