@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home.MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="666dp"
+            android:layout_weight="4"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_login" />
+        <View
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_margin="?actionBarSize"
+            android:textStyle="bold"
+            android:textSize="40sp"
+            android:textColor="#fff"
+            android:text="Đăng ký"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editSDT"
+            android:textColor="#fff"
+            android:textColorHint="#eee"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:hint="Số điện thoại"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/rounded_corner"
+            android:textSize="17sp" />
+        <EditText
+            android:id="@+id/editMatKhau"
+            android:textColor="#fff"
+            android:textColorHint="#eee"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/rounded_corner"
+            android:textSize="17sp" />
+        <EditText
+            android:id="@+id/editNhapLaiMK"
+            android:textColor="#ffff"
+            android:textColorHint="#eee"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:hint="Nhập lại mật khẩu"
+            android:inputType="textPassword"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/rounded_corner"
+            android:textSize="17sp" />
+        <Button
+            android:id="@+id/btnDangKy"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:background="@drawable/round_corner_buttom"
+            android:text="Đăng ký"
+            android:textColor="#777"
+            android:layout_width="400px"
+            android:layout_height="?actionBarSize" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

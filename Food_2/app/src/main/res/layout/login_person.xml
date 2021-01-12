@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Home.MainActivity">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
-            android:layout_weight="4"
-            android:src="@drawable/ic_login"
-            android:scaleType="centerCrop"
             android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            android:layout_height="515dp"
+            android:layout_weight="4"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_login" />
         <View
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -34,29 +35,29 @@
             android:textStyle="bold"
             android:textSize="40sp"
             android:textColor="#fff"
-            android:text="Sign in"
+            android:text="Đăng nhập"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/editUserName"
+            android:id="@+id/editDangNhap_SDT"
             android:textColor="#fff"
             android:textColorHint="#eee"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
-            android:hint="Email"
+            android:hint="Số điện thoại"
             android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@drawable/rounded_corner"
             android:textSize="17sp" />
         <EditText
-            android:id="@+id/editPassword"
+            android:id="@+id/editDangNhap_MK"
             android:textColor="#fff"
             android:textColorHint="#eee"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
-            android:hint="Password"
+            android:hint="Mật khẩu"
             android:inputType="textPassword"
             android:layout_margin="20dp"
             android:layout_width="match_parent"
@@ -68,16 +69,28 @@
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
             android:background="@drawable/round_corner_buttom"
-            android:text="sign in"
+            android:text="Đăng nhập"
             android:textColor="#777"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp" />
+            android:layout_width="400px"
+            android:layout_height="?actionBarSize" />
+        <TextView
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:text="Quên mật khẩu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
         <TextView
             android:layout_marginTop="20dp"
+            android:textSize="20dp"
             android:textColor="#fff"
-            android:text="Forgot Password?"
+            android:text="Đăng ký"
+            android:onClick="Dangky"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+             />
+
     </LinearLayout>
 
 
