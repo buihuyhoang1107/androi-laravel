@@ -19,10 +19,7 @@ import com.example.food_2.Model.CategoryModel;
 import com.example.food_2.R;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONStringer;
-
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class BaiVietAdapter extends RecyclerView.Adapter<BaiVietAdapter.BaiVietViewHolder> {
 
@@ -34,7 +31,6 @@ public class BaiVietAdapter extends RecyclerView.Adapter<BaiVietAdapter.BaiVietV
     public BaiVietAdapter(ArrayList<BaiVietModel> baiVietModels, CategoryModel categoryModel) {
         this.baiVietModels = baiVietModels;
         this.categoryModel = categoryModel;
-
     }
 
     @NonNull
@@ -59,6 +55,7 @@ public class BaiVietAdapter extends RecyclerView.Adapter<BaiVietAdapter.BaiVietV
                 v.getContext().startActivity(intent);
             }
         });
+
     }
 
     @Override
@@ -78,8 +75,8 @@ public class BaiVietAdapter extends RecyclerView.Adapter<BaiVietAdapter.BaiVietV
 
         public BaiVietViewHolder(@NonNull View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.imgListFoodAnhitem);
-            title = itemView.findViewById(R.id.txtListFoodTitleItem);
+            img = itemView.findViewById(R.id.imgHomeAnhitem);
+            title = itemView.findViewById(R.id.txtHomeTitleItem);
             item = itemView.findViewById(R.id.cardview_Item_Food);
         }
     }

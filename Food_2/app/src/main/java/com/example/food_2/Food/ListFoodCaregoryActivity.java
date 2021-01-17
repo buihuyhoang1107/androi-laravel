@@ -78,51 +78,54 @@ public class ListFoodCaregoryActivity extends AppCompatActivity {
     }
 
     private void getDataFood() {
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String url = Config.URL_API + "api/baiviets";
-        StringRequest request = new StringRequest(
-                Request.Method.GET,
-                url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray jArray = new JSONArray(response);
-                            if (jArray != null) {
+        try{
 
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            String url = Config.URL_API + "api/baiviets";
+            StringRequest request = new StringRequest(
+                    Request.Method.GET,
+                    url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jArray = new JSONArray(response);
+                                if (jArray != null) {
+                                    for (int i = 0; i < jArray.length(); i++) {
 
-                                for (int i = 0; i < jArray.length(); i++) {
+                                        BaiVietModel baiVietModel = new BaiVietModel();
+                                        baiVietModel.setCategory_id(jArray.getJSONObject(i).getInt("category_id"));
 
-                                    BaiVietModel baiVietModel = new BaiVietModel();
-                                    baiVietModel.setCategory_id(jArray.getJSONObject(i).getInt("category_id"));
+                                        if(baiVietModel.getCategory_id() != idCategory) continue;
 
-                                    if(baiVietModel.getCategory_id() != idCategory) continue;
+                                        baiVietModel.setId(jArray.getJSONObject(i).getInt("id"));
+                                        baiVietModel.setTen(jArray.getJSONObject(i).getString("ten"));
+                                        baiVietModel.setNguyenlieu(jArray.getJSONObject(i).getString("nguyenlieu"));
+                                        baiVietModel.setSoche(jArray.getJSONObject(i).getString("soche"));
+                                        baiVietModel.setThuchien(jArray.getJSONObject(i).getString("thuchien"));
+                                        baiVietModel.setCachdung(jArray.getJSONObject(i).getString("cachdung"));
+                                        baiVietModel.setHinhanh(jArray.getJSONObject(i).getString("hinhanh"));
+                                        baiVietModel.setVungmien_id(jArray.getJSONObject(i).getInt("vungmien_id"));
 
-                                    baiVietModel.setId(jArray.getJSONObject(i).getInt("id"));
-                                    baiVietModel.setTen(jArray.getJSONObject(i).getString("ten"));
-                                    baiVietModel.setNguyenlieu(jArray.getJSONObject(i).getString("nguyenlieu"));
-                                    baiVietModel.setSoche(jArray.getJSONObject(i).getString("soche"));
-                                    baiVietModel.setThuchien(jArray.getJSONObject(i).getString("thuchien"));
-                                    baiVietModel.setCachdung(jArray.getJSONObject(i).getString("cachdung"));
-                                    baiVietModel.setHinhanh(jArray.getJSONObject(i).getString("hinhanh"));
-                                    baiVietModel.setVungmien_id(jArray.getJSONObject(i).getInt("vungmien_id"));
-
-                                    baiVietModels.add(baiVietModel);
+                                        baiVietModels.add(baiVietModel);
+                                    }
                                 }
+                                configRCV();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            configRCV();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
-                },new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Title.setText("Error");
-            }
-        });
+                    },new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Title.setText("Error");
+                }
+            });
 
-        requestQueue.add(request);
+            requestQueue.add(request);
+        }catch (Exception err){
+            err.printStackTrace();
+        }
     }
     private void configRCV() {
         adapter = new BaiVietAdapter(baiVietModels,categoryModel);

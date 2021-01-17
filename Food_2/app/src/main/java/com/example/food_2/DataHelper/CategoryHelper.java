@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -49,19 +50,29 @@ public class CategoryHelper extends SQLiteOpenHelper {
     }
 
     public boolean add(CategoryModel categoryModel){
-        ContentValues ct = new ContentValues();
-        ct.put("id",categoryModel.getId());
-        ct.put("title",categoryModel.getTitle());
-        ct.put("img",categoryModel.getImg());
-        if(dbwrite.insert(NameTable,null,ct) == -1)
+        try{
+            ContentValues ct = new ContentValues();
+            ct.put("id",categoryModel.getId());
+            ct.put("title",categoryModel.getTitle());
+            ct.put("img",categoryModel.getImg());
+            if(dbwrite.insert(NameTable,null,ct) == -1)
+                return false;
+            return true;
+        }catch (Exception err){
+            Log.e("datahelper","add");
             return false;
-        return true;
+        }
     }
 
     public boolean delete(int id){
-        if(dbwrite.delete(NameTable,"id = " + id, null ) == -1)
+        try{
+            if(dbwrite.delete(NameTable,"id = " + id, null ) == -1)
+                return false;
+            return true;
+        }catch (Exception err){
+            Log.e("datahelper","delete");
             return false;
-        return true;
+        }
     }
 
     public CategoryModel getById(int id){

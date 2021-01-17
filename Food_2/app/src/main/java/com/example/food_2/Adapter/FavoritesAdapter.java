@@ -14,7 +14,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.food_2.Config;
-import com.example.food_2.DataHelper.BaivietHelper;
 import com.example.food_2.DataHelper.CategoryHelper;
 import com.example.food_2.Food.FoodInforActivity;
 import com.example.food_2.Model.BaiVietModel;
@@ -83,8 +82,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
 
         public FavoritesViewHolder(@NonNull View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.imgListFoodAnhitem);
-            title = itemView.findViewById(R.id.txtListFoodTitleItem);
+            img = itemView.findViewById(R.id.imgHomeAnhitem);
+            title = itemView.findViewById(R.id.txtHomeTitleItem);
             item = itemView.findViewById(R.id.cardview_Item_Food);
         }
     }
