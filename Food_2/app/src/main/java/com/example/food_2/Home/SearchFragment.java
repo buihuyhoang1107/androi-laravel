@@ -1,6 +1,7 @@
 package com.example.food_2.Home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,43 +59,48 @@ public class SearchFragment extends Fragment {
     }
 
     private void getDataCategory() {
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
-        String url = Config.URL_API + "api/categories";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        getDataFromResponse(response);
-                    }
-
-                    private void getDataFromResponse(String response) {
-                        try {
-                            JSONArray jArray = new JSONArray(response);
-                            if (jArray != null) {
-                                for (int i=0;i<jArray.length();i++){
-                                    CategoryModel category = new CategoryModel();
-                                    category.setTitle(jArray.getJSONObject(i).getString("title"));
-                                    category.setImg(jArray.getJSONObject(i).getString("hinhanh"));
-                                    category.setId(jArray.getJSONObject(i).getInt("id"));
-
-                                    categories.add(category);
-                                }
-                            }
-                            configRCV();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+        try {
+            RequestQueue queue = Volley.newRequestQueue(getActivity());
+            String url = Config.URL_API + "api/categories";
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            getDataFromResponse(response);
                         }
-                    }
 
-                },new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        TextView test = getView().findViewById(R.id.textView2);
-                        test.setText("That didn't work!");
-                    }
-        });
-        //call api
-        queue.add(stringRequest);
+                        private void getDataFromResponse(String response) {
+                            try {
+                                JSONArray jArray = new JSONArray(response);
+                                if (jArray != null) {
+                                    for (int i=0;i<jArray.length();i++){
+                                        CategoryModel category = new CategoryModel();
+                                        category.setTitle(jArray.getJSONObject(i).getString("title"));
+                                        category.setImg(jArray.getJSONObject(i).getString("hinhanh"));
+                                        category.setId(jArray.getJSONObject(i).getInt("id"));
+
+                                        categories.add(category);
+                                    }
+                                }
+                                configRCV();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    },new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("Search","err");
+                    error.printStackTrace();
+                }
+            });
+            //call api
+            queue.add(stringRequest);
+
+        }catch (Exception err){
+            err.printStackTrace();
+        }
     }
 
     private void configRCV() {

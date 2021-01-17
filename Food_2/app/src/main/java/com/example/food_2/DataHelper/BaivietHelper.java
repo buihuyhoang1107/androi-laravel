@@ -97,11 +97,17 @@ public class BaivietHelper extends SQLiteOpenHelper {
     }
 
     public boolean delete(int id){
-        SQLiteDatabase db = this.getWritableDatabase();
-        long res = db.delete(NameTable ,"id = " + id, null );
-        if( res == -1)
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            long res = db.delete(NameTable ,"id = " + id, null );
+            if( res == -1)
+                return false;
+            return true;
+        }
+        catch (Exception err){
+            Log.e("datahelper","delete");
             return false;
-        return true;
+        }
     }
 
     public BaiVietModel getById(int id){
