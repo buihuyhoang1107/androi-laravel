@@ -32,6 +32,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
     String UserName, Password;
 
     static final int USER_LOADER_ID = 1000;
+
+    public static boolean daDangNhap = false;
     LoaderManager loaderManager;
 
     public static Nguoidung  nguoidung = new Nguoidung();
@@ -47,7 +49,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
         btnDangKy = (TextView) findViewById(R.id.btnDangKy);
 
         loaderManager = LoaderManager.getInstance(this);
-
+        daDangNhap = false;
 
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +122,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
                 }
                 if(flag > 0){
                     Toast.makeText(this,"Đăng nhập thành công!",Toast.LENGTH_SHORT).show();
+                    daDangNhap = true;
                     Intent intent = new Intent(this, MainActivity.class);
                     startActivity(intent);
                 }

@@ -37,7 +37,8 @@ public class PersonFragment extends Fragment {
         btn_dangxuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),LoginActivity.class);
+                LoginActivity.daDangNhap = false;
+                Intent intent = new Intent(getContext(),MainActivity.class);
                 startActivity(intent);
             }
         });
