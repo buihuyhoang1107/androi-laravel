@@ -49,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_person:
                         {
-                            selectedFragment = new PersonFragment();
+                            if(LoginActivity.daDangNhap){
+                                selectedFragment = new PersonFragment();
+                            }
+                            else {
+                                selectedFragment = new PersonFragmentNotLogIn();
+                            }
                         }break;
                         default:break;
                     }
@@ -58,7 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 };
             };
 
-
+    public void DangNhap(View view) {
+        Intent downloadIntent = new Intent(this, LoginActivity.class);
+        startActivities(new Intent[]{downloadIntent});
+    }
 
     public void Dangky(View view) {
     }
