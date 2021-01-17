@@ -28,7 +28,9 @@ public class PersonFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_person,container,false);
 
         TextView textView = view.findViewById(R.id.txt_ten_nguoi_dung);
+        TextView textEmail = view.findViewById(R.id.txt_ten_email);
         textView.setText(LoginActivity.nguoidung.getTen());
+        textEmail.setText(LoginActivity.nguoidung.getGmail());
 
         Button btn_dangxuat = view.findViewById(R.id.btn_dang_xuat);
 
