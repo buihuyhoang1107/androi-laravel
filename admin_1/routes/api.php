@@ -26,3 +26,8 @@ Route::put('categories/{id}','Api\CategoriesController@CategoryUpdate');
 Route::apiResource('categories','Api\Categories');
 Route::apiResource('baiviets','Api\BaivietsApi');
 Route::apiResource('vungmiens','Api\VungmiensApi');*/
+
+
+
+//đăng nhập
+Route::apiResource('taikhoan','Api\TaiKhoanController')->only(['store']);

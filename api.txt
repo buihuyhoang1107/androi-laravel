@@ -1,0 +1,4 @@
+https://newfoodapp.000webhostapp.com/api/nguoidungs
+https://newfoodapp.000webhostapp.com/api/vungmiens
+https://newfoodapp.000webhostapp.com/api/baiviets
+https://newfoodapp.000webhostapp.com/api/categories

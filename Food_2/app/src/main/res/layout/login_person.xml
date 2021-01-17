@@ -40,12 +40,13 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/editDangNhap_SDT"
+            android:id="@+id/editDangNhap_Email"
             android:textColor="#fff"
             android:textColorHint="#eee"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
-            android:hint="Số điện thoại"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
             android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
@@ -64,15 +65,16 @@
             android:layout_height="?actionBarSize"
             android:background="@drawable/rounded_corner"
             android:textSize="17sp" />
+
         <Button
             android:id="@+id/btnLogin"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp"
-            android:background="@drawable/round_corner_buttom"
-            android:text="Đăng nhập"
-            android:textColor="#777"
             android:layout_width="400px"
-            android:layout_height="?actionBarSize" />
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/round_corner_buttom"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Đăng nhập"
+            android:textColor="#777" />
         <TextView
         android:layout_marginTop="20dp"
         android:textSize="20dp"
