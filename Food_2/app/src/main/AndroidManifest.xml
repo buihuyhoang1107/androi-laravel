@@ -14,14 +14,14 @@
         <activity android:name=".Food.FoodInforActivity"></activity>
         <activity android:name=".Food.ListFoodCaregoryActivity" />
         <activity android:name=".Login_out.RegisterActivity" />
-        <activity android:name=".Home.MainActivity">
+        <activity android:name=".Home.MainActivity" />
+        <activity android:name=".Login_out.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login_out.LoginActivity" />
     </application>
 
 </manifest>

@@ -8,19 +8,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.food_2.Login_out.LoginActivity;
 import com.example.food_2.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         //Tạo các button bấm
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
@@ -48,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new SearchFragment();
                             break;
                         case R.id.nav_person:
+                        {
                             selectedFragment = new PersonFragment();
-                            break;
+                        }break;
                         default:break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
@@ -57,12 +58,9 @@ public class MainActivity extends AppCompatActivity {
                 };
             };
 
-    public void DangNhap(View view) {
-        Intent downloadIntent = new Intent(this, LoginActivity.class);
-        startActivities(new Intent[]{downloadIntent});
-    }
 
 
     public void Dangky(View view) {
     }
+
 }
