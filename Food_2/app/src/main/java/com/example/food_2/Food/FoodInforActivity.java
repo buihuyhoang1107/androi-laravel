@@ -72,7 +72,8 @@ public class FoodInforActivity extends AppCompatActivity {
                 return true;
             case R.id.btnMenuLike:
             {
-                new ThichBaiVietAsyncTask(this,baiVietModel,categoryModel,progressBar,item).execute(isliked);
+                ThichBaiVietAsyncTask asyncTask = new  ThichBaiVietAsyncTask(this,baiVietModel,categoryModel,progressBar,item);
+                asyncTask.execute(isliked);
                 return true;
             }
             default:break;

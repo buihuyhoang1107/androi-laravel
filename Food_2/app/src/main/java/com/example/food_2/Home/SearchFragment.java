@@ -1,11 +1,13 @@
 package com.example.food_2.Home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,8 +21,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.food_2.Adapter.BaiVietAdapter;
 import com.example.food_2.Adapter.CategoryAdapter;
 import com.example.food_2.Config;
+import com.example.food_2.Food.FoodInforActivity;
 import com.example.food_2.Model.CategoryModel;
 import com.example.food_2.R;
 
@@ -106,6 +110,18 @@ public class SearchFragment extends Fragment {
     private void configRCV() {
         adapter = new CategoryAdapter(categories);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        if(MainActivity.orientation == 1){
+            recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),4));
+        }else{
+            recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        }
+//        getActivity().findViewById(R.id.fragment_Search_Tim).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                TextView textView = (TextView)getActivity().findViewById(R.id.fragment_search_searchView);
+//                String key = textView.getText().toString();
+//                Toast.makeText(getContext(),key,Toast.LENGTH_SHORT);
+//            }
+//        });
     }
 }

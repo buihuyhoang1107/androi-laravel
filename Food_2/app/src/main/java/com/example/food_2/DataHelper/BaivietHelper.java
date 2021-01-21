@@ -15,43 +15,10 @@ import com.example.food_2.Model.CategoryModel;
 
 import java.util.ArrayList;
 
-public class BaivietHelper extends SQLiteOpenHelper {
-
-    private String NameTable;
+public class BaivietHelper extends FoodAppHelper {
 
     public BaivietHelper(@Nullable Context context) {
-        super(context, ConfigHelper.DATADASE_NAME, null, ConfigHelper.Version);
-        NameTable = "baiviets";
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create table if not exists " + this.NameTable + "(" +
-                " id INTERGER primary key," +
-                " ten TEXT ," +
-                " nguyenlieu TEXT," +
-                " soche TEXT," +
-                " thuchien TEXT," +
-                " cachdung TEXT," +
-                " category_id INTERGER, " +
-                " vungmien_id INTERGER," +
-                " hinhanh TEXT)");
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists " + NameTable );
-        db.execSQL("Create table if not exists " + this.NameTable + "(" +
-                " id INTERGER primary key," +
-                " ten TEXT ," +
-                " nguyenlieu TEXT," +
-                " soche TEXT," +
-                " thuchien TEXT," +
-                " cachdung TEXT," +
-                " category_id INTERGER, " +
-                " vungmien_id INTERGER," +
-                " hinhanh TEXT)");
-        //db.execSQL("delete from "+ TABLE_NAME);
+        super(context);
     }
 
     public void updateTabel(ArrayList<BaiVietModel> baiVietModels){
@@ -68,7 +35,7 @@ public class BaivietHelper extends SQLiteOpenHelper {
             ct.put("category_id",bv.getCategory_id());
             ct.put("vungmien_id",bv.getVungmien_id());
             ct.put("hinhanh",bv.getHinhanh());
-            db.insert(NameTable,null,ct);
+            db.insert(this.BaiViet,null,ct);
         }
     }
 
@@ -85,7 +52,7 @@ public class BaivietHelper extends SQLiteOpenHelper {
         ct.put("vungmien_id",baiVietModel.getVungmien_id());//
         ct.put("hinhanh",baiVietModel.getHinhanh());//
         try {
-            long res = db.insertOrThrow(NameTable,null,ct);
+            long res = db.insertOrThrow(this.BaiViet,null,ct);
             if( res == -1){
                 return false;
             }
@@ -99,7 +66,7 @@ public class BaivietHelper extends SQLiteOpenHelper {
     public boolean delete(int id){
         try{
             SQLiteDatabase db = this.getWritableDatabase();
-            long res = db.delete(NameTable ,"id = " + id, null );
+            long res = db.delete(this.BaiViet ,"id = " + id, null );
             if( res == -1)
                 return false;
             return true;
@@ -114,7 +81,7 @@ public class BaivietHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
         try{
-            cursor = db.rawQuery("select * from " + NameTable + " where id = " + String.valueOf(id), null);
+            cursor = db.rawQuery("select * from " + this.BaiViet + " where id = " + String.valueOf(id), null);
         }catch (Exception err){
             return null;
         }
@@ -142,7 +109,7 @@ public class BaivietHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
         try{
-            cursor = db.rawQuery("select * from " + NameTable , null);
+            cursor = db.rawQuery("select * from " + this.BaiViet , null);
         }catch (Exception err){
             return null;
         }

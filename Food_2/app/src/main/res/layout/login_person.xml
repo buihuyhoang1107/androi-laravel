@@ -7,9 +7,9 @@
     tools:context=".Home.MainActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
@@ -17,83 +17,90 @@
             android:layout_weight="4"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_login" />
+
         <View
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="0dp"/>
+            android:layout_height="0dp"
+            android:layout_weight="1" />
     </LinearLayout>
 
-
-    <LinearLayout
-        android:gravity="center"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_margin="?actionBarSize"
-            android:textStyle="bold"
-            android:textSize="40sp"
-            android:textColor="#fff"
-            android:text="Đăng nhập"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/editDangNhap_Email"
-            android:textColor="#fff"
-            android:textColorHint="#eee"
-            android:paddingStart="10dp"
-            android:paddingLeft="10dp"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:layout_margin="20dp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="@drawable/rounded_corner"
-            android:textSize="17sp" />
-        <EditText
-            android:id="@+id/editDangNhap_MK"
-            android:textColor="#fff"
-            android:textColorHint="#eee"
-            android:paddingStart="10dp"
-            android:paddingLeft="10dp"
-            android:hint="Mật khẩu"
-            android:inputType="textPassword"
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="@drawable/rounded_corner"
-            android:textSize="17sp" />
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="400px"
-            android:layout_height="?actionBarSize"
-            android:background="@drawable/round_corner_buttom"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="Đăng nhập"
-            android:textColor="#777" />
-        <TextView
-        android:layout_marginTop="20dp"
-        android:textSize="20dp"
-        android:textColor="#fff"
-        android:text="Quên mật khẩu"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="?actionBarSize"
+                android:text="Đăng nhập"
+                android:textColor="#fff"
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_marginTop="20dp"
-            android:textSize="20dp"
-            android:textColor="#fff"
-            android:text="Đăng ký"
-            android:onClick="Dangky"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-             />
+            <EditText
+                android:id="@+id/editDangNhap_Email"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_margin="20dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="#fff"
+                android:textColorHint="#eee"
+                android:textSize="17sp" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editDangNhap_MK"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_margin="20dp"
+                android:background="@drawable/rounded_corner"
+                android:hint="Mật khẩu"
+                android:inputType="textPassword"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="#fff"
+                android:textColorHint="#eee"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="400px"
+                android:layout_height="?actionBarSize"
+                android:background="@drawable/round_corner_buttom"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Đăng nhập"
+                android:textColor="#777" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:text="Quên mật khẩu"
+                android:textColor="#fff"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:onClick="Dangky"
+                android:text="Đăng ký"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                tools:ignore="OnClick" />
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

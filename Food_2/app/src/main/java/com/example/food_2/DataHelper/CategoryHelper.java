@@ -15,47 +15,42 @@ import com.example.food_2.Model.CategoryModel;
 
 import java.util.ArrayList;
 
-public class CategoryHelper extends SQLiteOpenHelper {
-
-    private SQLiteDatabase dbread;
-    private SQLiteDatabase dbwrite;
-    private String NameTable;
+public class CategoryHelper extends FoodAppHelper {
 
     public CategoryHelper(@Nullable Context context) {
-        super(context, ConfigHelper.DATADASE_NAME, null, ConfigHelper.Version);
-        NameTable = "categories";
-        dbwrite = getWritableDatabase();
-        dbread = getReadableDatabase();
+        super(context);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create table if not exists " + NameTable + "(id interger primary key, title text not null, img not null)");
+        db.execSQL("Create table if not exists " + this.Category + "(id interger primary key, title text not null, img not null)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists " + NameTable);
-        db.execSQL("Create table if not exists " + NameTable + "(id interger primary key, title text not null, img not null)");
+        db.execSQL("drop table if exists " + this.Category);
+        db.execSQL("Create table if not exists " + this.Category + "(id interger primary key, title text not null, img not null)");
     }
 
     public void update(ArrayList<CategoryModel> categoryModels){
+        SQLiteDatabase db = getWritableDatabase();
         for (CategoryModel cate: categoryModels) {
             ContentValues ct = new ContentValues();
             ct.put("id",cate.getId());
             ct.put("title",cate.getTitle());
             ct.put("img",cate.getImg());
-            dbwrite.insert(NameTable,null,ct);
+            db.insert(this.Category,null,ct);
         }
     }
 
     public boolean add(CategoryModel categoryModel){
         try{
+            SQLiteDatabase db = getWritableDatabase();
             ContentValues ct = new ContentValues();
             ct.put("id",categoryModel.getId());
             ct.put("title",categoryModel.getTitle());
             ct.put("img",categoryModel.getImg());
-            if(dbwrite.insert(NameTable,null,ct) == -1)
+            if(db.insert(this.Category,null,ct) == -1)
                 return false;
             return true;
         }catch (Exception err){
@@ -66,7 +61,8 @@ public class CategoryHelper extends SQLiteOpenHelper {
 
     public boolean delete(int id){
         try{
-            if(dbwrite.delete(NameTable,"id = " + id, null ) == -1)
+            SQLiteDatabase db = getWritableDatabase();
+            if(db.delete(this.Category,"id = " + id, null ) == -1)
                 return false;
             return true;
         }catch (Exception err){
@@ -77,7 +73,7 @@ public class CategoryHelper extends SQLiteOpenHelper {
 
     public CategoryModel getById(int id){
         SQLiteDatabase db = getReadableDatabase();
-        String queryString ="select * from " + NameTable + " where id like ?";
+        String queryString ="select * from " + this.Category + " where id like ?";
         Cursor cursor = db.rawQuery(queryString, new String[] {String.valueOf(id)});
         if (cursor.getCount() == 0)
             return null;
@@ -94,7 +90,8 @@ public class CategoryHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<CategoryModel> getAll(){
-        Cursor cursor = dbread.rawQuery("select * from " + NameTable, null);
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from " + this.Category, null);
         if (cursor.getCount() == 0)
             return null;
         ArrayList<CategoryModel> categoryModels = new ArrayList<CategoryModel>();

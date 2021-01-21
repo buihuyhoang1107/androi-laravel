@@ -24,7 +24,7 @@ import com.example.food_2.remote.RegisterLoader;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class RegisterActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>{
+public class        RegisterActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>{
 
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
